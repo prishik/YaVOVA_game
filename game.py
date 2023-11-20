@@ -12,15 +12,16 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 DARK_GREY = (50,50,50)
 WIDTH, HEIGHT = 600,600
-bg_surf = pg.image.load('ELPRIMO.png')
-bg_rect = bg_surf.get_rect(bottomright=(750, 800))
+bg_surf = pg.image.load('colosseum.png')
+bg_surf = pg.transform.scale(bg_surf,(600,600))
+bg_rect = bg_surf.get_rect(bottomright=(600, 600))
 pg.display.set_caption('windows xp')
 
 class Apple(pg.sprite.Sprite):
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
-        self.image = pg.image.load('kubik.jpg')
-        self.image = pg.transform.scale(self.image, (30, 30))
+        self.image = pg.image.load('CUBE.png')
+        self.image = pg.transform.scale(self.image, (50, 50))
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(0,570)
         self.rect.y = random.randrange(0,570)
@@ -33,8 +34,8 @@ class Player(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self)
         self.speed_x = 1
         self.speed_y = 0
-        self.image = pg.image.load('susman.jpg')
-        self.image = pg.transform.scale(self.image, (30, 30))
+        self.image = pg.image.load('PNG.png')
+        self.image = pg.transform.scale(self.image, (50, 50))
         self.rect = self.image.get_rect()
         self.rect. centerx = WIDTH / 2
         self.rect.bottom = HEIGHT - 100
@@ -78,8 +79,8 @@ class Tail(pg.sprite.Sprite):
         super().__init__(*group)
         self.speed_x = player.speed_x
         self.speed_y = player.speed_y
-        self.image = pg.image.load('susman.jpg')
-        self.image = pg.transform.scale(self.image,(30,30))
+        self.image = pg.image.load('PNG.png')
+        self.image = pg.transform.scale(self.image,(50,50))
         self.rect = self.image.get_rect()
         self.rect.x = player.rect.x
         self.rect.y = player.rect.y
@@ -146,7 +147,7 @@ while 1:
         if i.type == pg.QUIT:
             exit()
 
-    win.fill((255,255,255))
+    win.fill((0,0,255))
     draw_text(win, name, len(name)*5 , 15, color=(0,0,0))#расположение имени адаптировано под длину имени
     draw_text(win, f'Score:{score}', WIDTH // 2 , 15,color=(0,0,0))
     all_sprites.update()
